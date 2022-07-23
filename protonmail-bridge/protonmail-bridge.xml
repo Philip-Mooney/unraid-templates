@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>protonmail-bridge</Name>
+  <Repository>shenxn/protonmail-bridge</Repository>
+  <Registry>https://hub.docker.com/r/shenxn/protonmail-bridge</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://github.com/shenxn/protonmail-bridge-docker</Project>
+  <Overview>Unraid template for protonmail-bridge, a bridge required for running Proton Mail on your own hardware without the web UI.&#xD;
+&#xD;
+NOTE: The protonmail-bridge application is designed to operate ONLY through the local network. Trying to externalize the ports will not work!&#xD;
+&#xD;
+After the container has started, you will need to access the CLI to do the initial setup.&#xD;
+Open the container's console and run the following commands:&#xD;
+```&#xD;
+chmod +x entrypoint.sh&#xD;
+./entrypoint.sh init&#xD;
+```&#xD;
+&#xD;
+If this does not seem to work, then try killing the protonmail-bridge and proton-bridge processes from within the container's processes by running the "top" command and then killing the processes with "kill ", then run from within the container:&#xD;
+&#xD;
+```&#xD;
+protonmail-bridge --cli&#xD;
+```&#xD;
+&#xD;
+Wait for the bridge to startup, use `login` command and follow the instructions to add your account into the bridge. Then use  `info` to see the configuration information (username and password). After that, use `exit` to exit the bridge.&#xD;
+&#xD;
+You may need CTRL+C to exit the docker entirely.&#xD;
+Then restart the container.</Overview>
+  <Category/>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://github.com/protonmail.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1658595131</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="SMTP Port" Target="25" Default="1025" Mode="tcp" Description="SMTP Port" Type="Port" Display="always" Required="true" Mask="false">1025</Config>
+  <Config Name="IMAP Port" Target="143" Default="1143" Mode="tcp" Description="IMAP Port" Type="Port" Display="always" Required="true" Mask="false">1143</Config>
+  <Config Name="Appdata" Target="/root" Default="/mnt/user/appdata/protonmail-bridge" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/protonmail-bridge</Config>
+</Container>
